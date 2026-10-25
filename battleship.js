@@ -23,8 +23,10 @@ for(let i = 0; i <DIM; i++){
     }
     navi.push(riga);
 }
-for (let colonna = 1; colonna <= 3; colonna++) {
-    navi[2][colonna] = "N";
+const rigaNave = Math.floor(Math.random() * DIM);
+const colonnaNave = Math.floor(Math.random() * 3);
+for (let colonna = 0; colonna <= 2; colonna++) {
+    navi[rigaNave][colonnaNave + colonna] = "N";
 }
 while(colpite < 3){
     let riga = Number(prompt("Riga (0-4): "));
