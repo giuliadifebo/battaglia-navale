@@ -28,7 +28,7 @@ const colonnaNave = Math.floor(Math.random() * 3);
 for (let colonna = 0; colonna <= 2; colonna++) {
     navi[rigaNave][colonnaNave + colonna] = "N";
 }
-while(colpite < 3){
+while(colpite < 3 && colpi < 15){
     let riga = Number(prompt("Riga (0-4): "));
     let colonna = Number(prompt("Colonna (0-4): "));
     if(Number.isInteger(riga) === false || Number.isInteger(colonna) === false || riga < 0 || colonna <0 || riga >= DIM || colonna >= DIM){
@@ -49,6 +49,13 @@ while(colpite < 3){
         campo[riga][colonna] = "O";
     }
     colpi++;
+    console.log("Colpi rimasti: " + (15 - colpi));
     stampaCampo(campo)
 }
-console.log("Nave affondata in " + colpi + " colpi!");
+if(colpite === 3){
+    console.log("Hai vinto! Nave affondata in " + colpi + " colpi!");
+}
+else{
+    console.log("Hai perso! La nave era qui:");
+    stampaCampo(navi);
+}
