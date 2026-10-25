@@ -14,6 +14,8 @@ function stampaCampo(griglia){
     }
 }
 let navi = [];
+let colpi = 0;
+let colpite = 0;
 for(let i = 0; i <DIM; i++){
     let riga = [];
     for(let j = 0; j<DIM; j++){
@@ -24,14 +26,19 @@ for(let i = 0; i <DIM; i++){
 for (let colonna = 1; colonna <= 3; colonna++) {
     navi[2][colonna] = "N";
 }
-let riga = Number(prompt("Riga (0-4): "));
-let colonna = Number(prompt("Colonna (0-4): "));
-if(navi[riga][colonna] === "N"){
-    console.log("Colpito!");
-    campo[riga][colonna] = "X";
+while(colpite < 3){
+    let riga = Number(prompt("Riga (0-4): "));
+    let colonna = Number(prompt("Colonna (0-4): "));
+    if(navi[riga][colonna] === "N"){
+        console.log("Colpito!");
+        campo[riga][colonna] = "X";
+        colpite++;
+    }
+    else{
+        console.log("Mancato!");
+        campo[riga][colonna] = "O";
+    }
+    colpi++;
+    stampaCampo(campo)
 }
-else{
-    console.log("Mancato!");
-    campo[riga][colonna] = "O";
-}
-stampaCampo(campo)
+console.log("Nave affondata in " + colpi + " colpi!");
