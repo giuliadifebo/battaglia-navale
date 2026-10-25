@@ -29,6 +29,14 @@ for (let colonna = 1; colonna <= 3; colonna++) {
 while(colpite < 3){
     let riga = Number(prompt("Riga (0-4): "));
     let colonna = Number(prompt("Colonna (0-4): "));
+    if(Number.isInteger(riga) === false || Number.isInteger(colonna) === false || riga < 0 || colonna <0 || riga >= DIM || colonna >= DIM){
+        console.log("Coordinate fuori dalla griglia, riprova");
+        continue;
+    }
+    if(campo[riga][colonna] !== "~"){
+        console.log("Hai già sparato qui, riprova");
+        continue;
+    }
     if(navi[riga][colonna] === "N"){
         console.log("Colpito!");
         campo[riga][colonna] = "X";
